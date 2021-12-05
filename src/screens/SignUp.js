@@ -5,17 +5,27 @@ import { AntDesign } from '@expo/vector-icons';
 import HeaderComp from './HeaderComponent';
 import MyButton from './MyButton';
 import MyInputField from './MyInputField';
+import Card from './CardComponent';
 
 const SignUp = () => {
   return(
     <ScrollView>
       <View style={styles.background}>
+
+      <Card
+          //path={require('D:/React/Event-Management/assets/pic.jpg')}
+          eventname = "Yoga Camp"
+          eventdesc = "created by ana"
+          date="20 Nov"
+          likes="20"
+
+      />
           <HeaderComp title='SignUp' />
           
           <View style={styles.imageCircleBox}>
             <View style={styles.imageCircle}>
             <Image style={styles.image}
-            source={require('D:/React Native/Event-Management/assets/pic.jpg')} />
+            source={require('D:/React/Event-Management/assets/pic.jpg')} />
             <AntDesign style={styles.Camera} name="camera" size={40} color="black"  />
             </View>
             </View>
@@ -64,6 +74,7 @@ const styles = StyleSheet.create({
         borderRadius:80,
         backgroundColor:'#FFFFFF',
     },
+    
     image:{
         width:148,
         height:148,
