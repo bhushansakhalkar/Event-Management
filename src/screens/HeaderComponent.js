@@ -11,16 +11,16 @@ const HeaderComp = (props) => {
 
 const styles = StyleSheet.create({
     SignUp: {
-        fontSize: 40,
+        fontSize: 30,
         height:'50%',
         color:'white',
-        marginTop:25,
+        marginTop:30,
     
   },
   SignUpBox:{
         alignContent:'center',
         alignItems:'center',
-        height:'20%',
+        height:'15%',
         backgroundColor:'#004DA9'
   },
 

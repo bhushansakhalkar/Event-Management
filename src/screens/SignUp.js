@@ -14,8 +14,8 @@ const SignUp = () => {
           
           <View style={styles.imageCircleBox}>
             <View style={styles.imageCircle}>
-            <Image 
-            source={require('D:/React Native/Event-Management/assets/splash.png')} />
+            <Image style={styles.image}
+            source={require('D:/React Native/Event-Management/assets/pic.jpg')} />
             <AntDesign style={styles.Camera} name="camera" size={40} color="black"  />
             </View>
             </View>
@@ -40,7 +40,7 @@ const SignUp = () => {
 const styles = StyleSheet.create({
     background:{
         backgroundColor:'#F2F3FF',
-        paddingBottom:60
+        paddingBottom:100,
     },
     whiteBox:{
         width:'90%',
@@ -65,8 +65,9 @@ const styles = StyleSheet.create({
         backgroundColor:'#FFFFFF',
     },
     image:{
-        width:150,
-        height:150,
+        width:148,
+        height:148,
+        borderRadius:80,
     },
     Camera:{
         position:'absolute',
