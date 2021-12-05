@@ -11,7 +11,7 @@ const navigator = createStackNavigator(
     
   },
   {
-    initialRouteName: "SignUp",
+    initialRouteName: "Home",
     defaultNavigationOptions: {
       title: "Rel-Event",
     },
