@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity,Image } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
+import { FontAwesome } from '@expo/vector-icons';
 
 
 const CardComp = (props) => {
@@ -14,7 +15,7 @@ const CardComp = (props) => {
         <TouchableOpacity>
         <Text style={styles.cardevent}>{props.eventName}</Text>
         <Text style={styles.carddesc}>{props.eventLocation}</Text>
-        <Text style={styles.cardcreated}>{"Created By "+props.createdBy}</Text>
+        <Text style={styles.cardcreated}>{"Created By "+props.createBy}</Text>
         </TouchableOpacity>
       </View>
         
@@ -24,7 +25,7 @@ const CardComp = (props) => {
       </View>
       <View style={{top:25,flexDirection:'column'}} >
         <TouchableOpacity>
-        <AntDesign style={styles.heart} name="hearto" size={40} color="black" />
+        <FontAwesome style={styles.heart} name="heart-o" size={35} color="black" />
         </TouchableOpacity>
         <Text style={{marginLeft:'10%'}}>{props.likes}</Text>
       </View>
@@ -98,8 +99,7 @@ const styles = StyleSheet.create({
       color: 'white'
   },
   heart: {
-        width:'10%',
-        height:'15%',
+        marginRight:'2%',
         marginRight:10
   },
 });

@@ -4,27 +4,27 @@ import { ceil } from 'react-native-reanimated';
 
 const HeaderComp = (props) => {
   return (
-    <View style={styles.SignUpBox}>
-              <Text style={styles.SignUp}>{props.title}</Text>
+    <View style={styles.headerBox}>
+              <Text style={styles.header}>{props.title}</Text>
           </View>
   )
 };
 
 const styles = StyleSheet.create({
   
-    SignUp: {
+    header: {
         fontSize: 30,
         height:'50%',
         color:'white',
-        marginTop:25,
+        marginTop:5,
         
     
   },
-  SignUpBox:{
+  headerBox:{
+    
         alignItems: 'center',
-        flex: 1,
         justifyContent: 'center',
-        height:150,
+        height:'15%',
         backgroundColor:'#004DA9'
   },
 

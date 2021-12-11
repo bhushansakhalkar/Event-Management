@@ -1,14 +1,20 @@
 import React from 'react';
-import { Text, StyleSheet,View, TouchableOpacity, Button } from 'react-native';
+import { Text, StyleSheet,View, } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import CardComp from './CardComponent';
 import LogoComp from './LogoComponent';
+import MenuBarComp from './MenuBarComponent';
 import MyButton from './MyButton';
+import { Dimensions } from 'react-native';
+
+
 const HomeScreen = () => {
+  const width = Dimensions.get('window').width;
+  const height = Dimensions.get('window').height;
   return (
-  <View>
-    <LogoComp src={require('D:/React Native/Event-Management/assets/Logo.png')} title="Rel-Event"/>
-    <ScrollView>
+  <View style={{flex:1}}>  
+     <ScrollView style={{flex:0.8,height:height-200}} >
+     <LogoComp src={require('D:/React Native/Event-Management/assets/Logo.png')} title="Rel-Event"/>
   <Text style={styles.text}>Recommended Events For You</Text>
   <ScrollView horizontal={true}>
   <View style={styles.container}>
@@ -19,7 +25,7 @@ const HomeScreen = () => {
   <CardComp src={require('D:/React Native/Event-Management/assets/dance2.jpg')} eventName='Heidelberg Dance' eventLocation='Heidelberg' date='20 Nov' likes='120' createBy='Bhushan' />
   <MyButton name="-->" />
   </View>
-  </ScrollView>
+  </ScrollView> 
 
   <Text style={styles.text}>Because You Liked Dance Camp</Text>
   <ScrollView horizontal={true}>
@@ -56,8 +62,20 @@ const HomeScreen = () => {
   <MyButton name="-->" />
   </View>
   </ScrollView>
-
+  
+  
+ 
 </ScrollView>
+
+<View style={styles.footer} >
+    <MenuBarComp  />
+    </View>
+{/* <Animated.View ref="stickyHeader" style={[styles.stickyStuff, {top: stickySegmentControlX}]}>
+    <MenuBarComp  />
+     </Animated.View> */}
+
+
+
   </View>
   )
 };
@@ -68,10 +86,15 @@ const styles = StyleSheet.create({
     marginLeft:'3%'
   },
   container:{
+    flex:0.9,
     flexDirection:'row',
     marginLeft:'0.5%',
     paddingBottom:30
-  }
+  },
+  footer: {
+    flex:0.2,
+    height:200
+  },
 });
 
 export default HomeScreen;
