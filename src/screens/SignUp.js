@@ -5,21 +5,14 @@ import { AntDesign } from '@expo/vector-icons';
 import HeaderComp from './HeaderComponent';
 import MyButton from './MyButton';
 import MyInputField from './MyInputField';
-import Card from './CardComponent';
+import MySearch from "./SearchComponent";
 
 const SignUp = () => {
   return(
     <ScrollView>
       <View style={styles.background}>
 
-      <Card
-          //path={require('D:/React/Event-Management/assets/pic.jpg')}
-          eventname = "Yoga Camp"
-          eventdesc = "created by ana"
-          date="20 Nov"
-          likes="20"
-
-      />
+      
           <HeaderComp title='SignUp' />
           
           <View style={styles.imageCircleBox}>
@@ -36,6 +29,7 @@ const SignUp = () => {
           <MyInputField placeholder="Date of Birth" />
           <MyInputField placeholder="Password" />
           <MyInputField placeholder="Confirm Password" />
+          
 
           
           <MyButton name='Sign Up' />

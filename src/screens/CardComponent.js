@@ -1,25 +1,36 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity,Image } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
+import { FontAwesome } from '@expo/vector-icons';
 
 
 const CardComp = (props) => {
   return (
-      
-
     <View style={styles.card}>
-{/* <Image style={styles.image}
-            source={require()} /> */}
-      <View >
-        <Text style={styles.cardevent}>{props.eventname}</Text>
-        <Text style={styles.carddesc}>{props.eventdesc}</Text>
+    <Image style={styles.image}
+            source={props.src} />
+    
+      <View style={{flexDirection:'row'}}>
+      <View style={styles.cardText}>    
+        <TouchableOpacity>
+        <Text style={styles.cardevent}>{props.eventName}</Text>
+        <Text style={styles.carddesc}>{props.eventLocation}</Text>
+        <Text style={styles.cardcreated}>{"Created By "+props.createBy}</Text>
+        </TouchableOpacity>
       </View>
+        
+    <View style={{flexDirection:"column",right:0,position:"absolute"}}>
       <View style={styles.circle}>
         <Text style={styles.datetext}>{props.date}</Text>
       </View>
-      <View>
-        <AntDesign style={styles.heart} name="hearto" size={40} color="black" />
-        <Text>{props.likes}</Text>
+      <View style={{top:25,flexDirection:'column'}} >
+        <TouchableOpacity>
+        <FontAwesome style={styles.heart} name="heart-o" size={35} color="black" />
+        </TouchableOpacity>
+        <Text style={{marginLeft:'10%'}}>{props.likes}</Text>
+      </View>
+      </View>
+
       </View>
     </View>
   );
@@ -27,11 +38,12 @@ const CardComp = (props) => {
 
 const styles = StyleSheet.create({
   card: {
-    width: 300,
-    height: 275,
-    flexDirection: "row",
+    width: 270,
+    height: 255,
+    flexDirection: "column",
     margin: 15,
    marginHorizontal: 10,
+   backgroundColor:'#FFFFFF',
    marginBottom: 17.5,
    borderColor: '#FFFFFF',
    shadowColor: '#000',
@@ -42,43 +54,53 @@ const styles = StyleSheet.create({
    borderRadius: 10
   },
   image: {
-    width:148,
-        height:148,
-        borderRadius:80,
+    width:'100%',
+    height:150,
+    flex: 1,
+    resizeMode: 'cover',
+    borderRadius:2,
   },
   cardevent: {
     
-     marginTop: "90%",
-     marginLeft: "10%",
-     fontSize:20,
-     width: "79%"
-    
+     
+    fontSize:20,
+    marginTop:'5%',
      
   },
   carddesc:{
-    
-     marginTop: 20,
-     marginLeft: 15
+    fontSize:15,
+    marginTop:'5%',
+     
 
+  },
+  cardcreated:{
+    fontSize:15,
+    opacity:0.5,
+    marginTop:'5%',
+},
+  cardText:{
+    flexDirection:'column',
+    marginLeft:'2%',
   },
   circle: {
     width: 70,
     height: 70,
-    borderRadius: 100 / 2,
+    top:-50,
+    right:0,
+    position:"absolute",
+    borderRadius: 100/2,
     backgroundColor: '#FA841A',
-    marginLeft: 70,
-    marginTop: 100
   },
   datetext: {
-      fontSize: 18,
+      fontSize: 16,
+      textAlign:'center',
+      alignSelf:'center',
+      marginTop:'30%',
       color: 'white'
   },
   heart: {
-    
-        width:'10%',
-        height:'15%',
-        marginTop: "120%",
-
+        marginRight:'2%',
+        marginRight:10
   },
 });
 
