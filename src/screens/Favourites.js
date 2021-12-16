@@ -10,96 +10,15 @@ import EventComponent from './EventComponent';
 import HeaderComp from './HeaderComponent';
 import CardCompSmall from './CardComponentSmall';
 import HeaderCompSec from './HeaderCompSecondary';
+import Favs from '../../assets/data/Favourtes';
 
 
 
-const recommended = [
-  {
-    id:'1',
-    src:require('D:/React Native/Event-Management/assets/dance2.jpg'),
-     eventName:'Heidelberg Dance',
-      eventLocation:'Heidelberg',
-       date:'20 Nov',
-        likes:'120',
-         createBy:'Bhushan Sakhalkar',
-         price:'Free',
-         image:require('D:/React Native/Event-Management/assets/pic.jpg'),
-         about:"Some dummy text to check if the about function works and how well it works, also writing so much so that the box is filled with data and it doesn't look weird, ofcourse I need to change this when I present it during exam, and incase if I do not remember, sorry in advance",
-         attendes:[
-          {
-            id:1,
-            image:require('D:/React Native/Event-Management/assets/pic.jpg'),
-            names:"John Abra"
-          },
-          {
-            id:2,
-            image:require('D:/React Native/Event-Management/assets/pic.jpg'),
-            names:"Jonny Sins"
-          },
-          {
-            id:3,
-            image:require('D:/React Native/Event-Management/assets/pic.jpg'),
-            names:"Kabir Singh"
-          },
-          {
-            id:4,
-            image:require('D:/React Native/Event-Management/assets/pic.jpg'),
-            names:"Babu Bhaiya"
-          },
-          {
-            id:5,
-            image:require('D:/React Native/Event-Management/assets/pic.jpg'),
-            names:"Vasooli Bhai"
-          },
-        ]
-    },
-  {
-    id:'2',
-    src:require('D:/React Native/Event-Management/assets/dance2.jpg'),
-     eventName:'Heidelberg Dance',
-      eventLocation:'Heidelberg',
-       date:'20 Nov',
-        likes:'120',
-         createBy:'Bhushan Sakhalkar',
-         price:'100$',
-         image:require('D:/React Native/Event-Management/assets/pic.jpg'),
-         about:"Some dummy text to check if the about function works and how well it works, also writing so much so that the box is filled with data and it doesn't look weird, ofcourse I need to change this when I present it during exam, and incase if I do not remember, sorry in advance",
-        attendes:[
-            {
-              id:1,
-              image:require('D:/React Native/Event-Management/assets/pic.jpg'),
-              names:"John Abra"
-            },
-            {
-              id:2,
-              image:require('D:/React Native/Event-Management/assets/pic.jpg'),
-              names:"Jonny Sins"
-            },
-            {
-              id:3,
-              image:require('D:/React Native/Event-Management/assets/pic.jpg'),
-              names:"Kabir Singh"
-            },
-            {
-              id:4,
-              image:require('D:/React Native/Event-Management/assets/pic.jpg'),
-              names:"Babu Bhaiya"
-            },
-            {
-              id:5,
-              image:require('D:/React Native/Event-Management/assets/pic.jpg'),
-              names:"Vasooli Bhai"
-            },
-          ]
-          
-        
-  }
-]
 
 const Favorites = (props,{navigation}) => {
   const width = Dimensions.get('window').width;
   const height = Dimensions.get('window').height;
- 
+  const numColumns=Math.ceil(Favs.length / 3);
   return (
     
   <View style={styles.page}>
@@ -114,17 +33,17 @@ const Favorites = (props,{navigation}) => {
     
     <FlatList 
            
-        data={recommended}
+        data={Favs}
+        numColumns = {numColumns}
         renderItem={({item})=>{
           console.log(item)
           return(
             <View style={{flexDirection:'row'}}>
             <CardCompSmall navigate={props.navigation.navigate} destination={"Description"} object={item} id={item.id} src={item.src} eventName={item.eventName} eventLocation={item.eventLocation} date={item.date} likes={item.likes}  createBy={item.createBy} image={item.image} price={item.price} />
-            <CardCompSmall navigate={props.navigation.navigate} destination={"Description"} object={item} id={item.id} src={item.src} eventName={item.eventName} eventLocation={item.eventLocation} date={item.date} likes={item.likes}  createBy={item.createBy} image={item.image} price={item.price} />
             </View>
           )
         }}
-        keyExtractor={recommended => recommended.id}
+        keyExtractor={Favs => Favs.id}
       />
   
   </View>
