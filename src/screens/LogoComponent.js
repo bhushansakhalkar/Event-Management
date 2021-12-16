@@ -14,27 +14,25 @@ const LogoComp = (props) => {
 
 const styles = StyleSheet.create({
     image:{
+      marginLeft:'10%',
         width:80,
         height:80,
         borderRadius:50,
-        marginTop:5,
-        marginRight:'5%'
+        marginTop:20,
+        
     },
     SignUp: {
+      marginLeft:'10%',
         fontSize: 30,
         height:'50%',
-
+        marginTop:35,
         color:'white',
-        marginTop:25,
         
     
   },
   SignUpBox:{
         flexDirection:'row',
-        alignItems: 'center',
-        // flex: 1,
-        justifyContent: 'center',
-        height:150,
+        height:130,
         backgroundColor:'#004DA9'
   },
 

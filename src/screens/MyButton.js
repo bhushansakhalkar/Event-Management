@@ -4,7 +4,9 @@ import { View,Text, StyleSheet, TouchableOpacity } from 'react-native';
 const MyButton = (props) => {
   return (
     <View style={styles.SignUpButtonBox}>
-          <TouchableOpacity >
+          <TouchableOpacity onPress={()=>{
+            props.navigation(props.destination)
+          }}>
           <Text  style={styles.SignUpButton} >{props.name}</Text>
           </TouchableOpacity>
           </View>

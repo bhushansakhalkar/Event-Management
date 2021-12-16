@@ -1,14 +1,21 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { View,Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { AntDesign } from "@expo/vector-icons";
 const EventComponent = (props) => {
+  const [color, setColor] = useState('black');
+  const [pressed,setPressed] =useState(!pressed)
+  const [likes, setLikes] = useState(props.likes)
   return (
-    <View >
+    <View>
           <View style={styles.container}>
             
             <Image style={styles.image} source={props.src}/>
             <View style={styles.textContainer}>
-            <TouchableOpacity>
+            <TouchableOpacity 
+             onPress={()=>{
+              props.navigate(props.destination,{item:props.object})
+            }}
+            >
                 <Text  style={styles.header} >{props.title}</Text>
                 <Text  style={styles.text} >{"Date : "+props.date}</Text>
                 <Text  style={styles.text} >{"Event Type : "+props.type}</Text>
@@ -19,17 +26,24 @@ const EventComponent = (props) => {
                 <View style={styles.rating}>
             
               <Text style={{paddingRight:5}}>Rating </Text>
-          <AntDesign name="staro" size={20} color="black" />
-          <AntDesign name="staro" size={20} color="black" />
-          <AntDesign name="staro" size={20} color="black" />
+          <AntDesign name="star" size={20} color="black" />
+          <AntDesign name="star" size={20} color="black" />
+          <AntDesign name="star" size={20} color="black" />
           <AntDesign name="staro" size={20} color="black" />
           <AntDesign name="staro" size={20} color="black" />
           
           </View>
           
           </View>
-          <TouchableOpacity style={{flexDirection:'column'}}>
-          <AntDesign style={styles.heart} name="hearto" size={24} color="black" />
+          <TouchableOpacity style={{flexDirection:'column'}} onPress={()=>{
+          setPressed(!pressed)
+          setColor(pressed?'red':'black')
+          setLikes(pressed?likes+1:likes-1)
+        }} 
+          
+          >
+          <AntDesign style={styles.heart} name="hearto" size={24} color={color} />
+          <Text style={styles.heart1}>{likes}</Text>
           </TouchableOpacity>
 
          
@@ -51,14 +65,13 @@ const styles = StyleSheet.create({
    container:{
     flexDirection:'row',
     width:'100%',
-    height:220,
+    height:200,
     
 },
 image:{
-  flex:0.9,
-    height:180,
+  flex:1.4,
+    height:190,
     width:100,
-    marginTop:'1%',
     marginLeft:'2%',
     marginRight:'2%'
 },
@@ -67,17 +80,21 @@ textContainer:{
     flex:2,
 },
    header:{
-        fontSize:18,
+        fontSize:16,
    },
    text:{
         fontSize:12,
         marginTop:'3%'
    },
    heart:{
-     flex:1,
+     flex:0.6,
     marginTop:30,
     marginRight:10
    },
+   heart1:{
+    position:'absolute', 
+    top:60
+  },
    rating:{
     flexDirection:'row',
     marginTop:'5%',

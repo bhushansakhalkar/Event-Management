@@ -6,11 +6,11 @@ import HeaderComp from './HeaderComponent';
 import MyButton from './MyButton';
 import MyInputField from './MyInputField';
 
-const SignUp = () => {
+const SignUp = (props,{navigation}) => {
   return(
     <ScrollView> 
       <View style={styles.background}>
-          <HeaderComp title='SignUp' />
+          {/* <HeaderComp title='SignUp' /> */}
           
           <View style={styles.imageCircleBox}>
             <View style={styles.imageCircle}>
@@ -27,9 +27,11 @@ const SignUp = () => {
           <MyInputField placeholder="Password" />
           <MyInputField placeholder="Confirm Password" />
 
-          
+          <TouchableOpacity onPress={()=>{
+              props.navigation.navigate("Login")
+          }}>
           <MyButton name='Sign Up' />
-          
+          </TouchableOpacity>
 
           </View>
       </View>

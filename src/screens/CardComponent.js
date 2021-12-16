@@ -1,10 +1,14 @@
-import React from "react";
+import React,{useState} from "react";
 import { View, Text, StyleSheet, TouchableOpacity,Image } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { FontAwesome } from '@expo/vector-icons';
 
 
+
 const CardComp = (props) => {
+  const [color, setColor] = useState('black');
+  const [pressed,setPressed] =useState(!pressed)
+  const [likes, setLikes] = useState(props.likes)
   return (
     <View style={styles.card}>
     <Image style={styles.image}
@@ -12,7 +16,11 @@ const CardComp = (props) => {
     
       <View style={{flexDirection:'row'}}>
       <View style={styles.cardText}>    
-        <TouchableOpacity>
+        <TouchableOpacity 
+          onPress={()=>{
+            props.navigate(props.destination,{item:props.object})
+          }}
+        >
         <Text style={styles.cardevent}>{props.eventName}</Text>
         <Text style={styles.carddesc}>{props.eventLocation}</Text>
         <Text style={styles.cardcreated}>{"Created By "+props.createBy}</Text>
@@ -24,10 +32,14 @@ const CardComp = (props) => {
         <Text style={styles.datetext}>{props.date}</Text>
       </View>
       <View style={{top:25,flexDirection:'column'}} >
-        <TouchableOpacity>
-        <FontAwesome style={styles.heart} name="heart-o" size={35} color="black" />
+        <TouchableOpacity onPress={()=>{
+          setPressed(!pressed)
+          setColor(pressed?'red':'black')
+          setLikes(pressed?likes+1:likes-1)
+        }}>
+        <FontAwesome style={{marginRight:'2%',marginRight:10,}} name="heart-o" size={35} color={color} />
         </TouchableOpacity>
-        <Text style={{marginLeft:'10%'}}>{props.likes}</Text>
+        <Text style={{marginLeft:'10%'}}>{likes}</Text>
       </View>
       </View>
 
@@ -38,8 +50,8 @@ const CardComp = (props) => {
 
 const styles = StyleSheet.create({
   card: {
-    width: 270,
-    height: 255,
+    width: 250,
+    height: 265,
     flexDirection: "column",
     margin: 15,
    marginHorizontal: 10,
@@ -51,7 +63,8 @@ const styles = StyleSheet.create({
    shadowOpacity: 0.3,
    shadowRadius: 5,
    elevation: 5,
-   borderRadius: 10
+   borderRadius: 10,
+   
   },
   image: {
     width:'100%',
@@ -61,11 +74,15 @@ const styles = StyleSheet.create({
     borderRadius:2,
   },
   cardevent: {
-    
-     
-    fontSize:20,
+    fontSize:18,
+    width:'95%',
     marginTop:'5%',
-     
+    flexWrap:'wrap',
+    flexShrink:1
+  },
+  heart2:{
+    backgroundColor:'black',
+    color:'white'
   },
   carddesc:{
     fontSize:15,
@@ -92,10 +109,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#FA841A',
   },
   datetext: {
-      fontSize: 16,
+      fontSize: 15,
       textAlign:'center',
       alignSelf:'center',
-      marginTop:'30%',
+      marginTop:'20%',
       color: 'white'
   },
   heart: {

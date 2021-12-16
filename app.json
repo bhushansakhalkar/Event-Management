@@ -3,6 +3,9 @@
     "name": "rn-starter-1",
     "slug": "rn-starter-1",
     "version": "1.0.0",
+    "androidStatusBar": {
+    "backgroundColor": "transparent"
+    },
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -23,8 +26,10 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "softwareKeyboardLayoutMode":"pan"
     },
+    
     "web": {
       "favicon": "./assets/favicon.png"
     }
